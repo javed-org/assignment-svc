@@ -32,4 +32,4 @@ jobs:
 
     - name: helm delete
       run: |
-        cd demo-charts/demo && helm uninstall demo  --wait    
+        cd demo-charts/demo && helm uninstall demo    
