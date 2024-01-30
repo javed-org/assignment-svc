@@ -41,8 +41,10 @@ jobs:
 
         sed -E -i "s/tag: \"(.*)\"/tag: \"${BRANCH_NAME}-${COMMIT_ID}\"/g" values.yaml
         helm lint .
+        cat values.yaml
     - name: helm deploy
       run: |
         kubectl get no
         kubectl get po -A
-        cd demo-charts/demo && helm upgrade --install demo . -f values.yaml  --wait    
+        cd demo-charts/demo && helm upgrade --install demo . -f values.yaml  --wait
+        kubectl get ingress    
