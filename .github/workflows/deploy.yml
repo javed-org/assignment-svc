@@ -25,19 +25,19 @@ jobs:
         role-to-assume: ${{secrets.AWS_ROLE_ARN}}
         role-session-name: samplerolesession
         aws-region: ${{secrets.AWS_REGION}}
+ 
     
-    - name: Update EKS deployment
-      id: deploy-eks
-      uses: aws-actions/amazon-ecr-login@v1
     - name: Update kube config
-      run: aws eks update-kubeconfig --name dob-dev-cluster --region eu-west-1
+      run: aws eks update-kubeconfig --name ${{secrets.EKS_CLUSTER_NAME}} --region ${{secrets.AWS_REGION}}
     - name: Set image tag
       env:
           ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ github.event.repository.name }}
+          ECR_REPOSITORY: ${{secrets.ECR_REPO_NAME}}
+          
       run: |
         COMMIT_ID=$(echo "${{ github.sha }}" | head -c 5)
         cd demo-charts/demo
+        sed -E -i "s/repository: \"(.*)\"/repository: \"${ECR_REGISTRY}/{ECR_REPOSITORY}\"/g" values.yaml
         sed -E -i "s/tag: \"(.*)\"/tag: \"${BRANCH_NAME}-${COMMIT_ID}\"/g" values.yaml
         helm lint .
     - name: helm deploy
