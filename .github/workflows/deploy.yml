@@ -38,7 +38,7 @@ jobs:
         COMMIT_ID=$(echo "${{ github.sha }}" | head -c 5)
         echo $ECR_REGISTRY
         echo $ECR_REPOSITORY
-        repo_name=$ECR_REGISTRY-$ECR_REPOSITORY
+        repo_name=${{env.ECR_REGISTRY}}-${{env.ECR_REPOSITORY}}
         echo $repo_name
         cd demo-charts/demo
         sed -E -i "s/repository: .+/repository: $repo_name/" values.yaml
