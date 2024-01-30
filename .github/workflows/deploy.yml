@@ -43,4 +43,6 @@ jobs:
         helm lint .
     - name: helm deploy
       run: |
+        kubectl get no
+        kubectl get po -A
         cd demo-charts/demo && helm upgrade --install demo . -f values.yaml  --wait    
