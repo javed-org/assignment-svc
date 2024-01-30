@@ -45,6 +45,6 @@ jobs:
       run: |
         kubectl get no
         kubectl get po -A
-        ECR
+        
         cd demo-charts/demo && helm upgrade --install demo . -f values.yaml --set image.repository=${ECR_REGISTRY}/${ECR_REPOSITORY}  --wait
         kubectl get ingress    
