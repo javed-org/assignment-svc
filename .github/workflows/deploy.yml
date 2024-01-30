@@ -52,4 +52,5 @@ jobs:
         
         cd demo-charts/demo && helm upgrade --install demo . -f values.yaml 
         kubectl get po
+        kubectl get deploy demo -o yaml
         kubectl get ingress    
