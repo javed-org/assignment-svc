@@ -22,19 +22,19 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v3
       with:
-        role-to-assume: ${{secrets.ROLE_ARN}}
+        role-to-assume: ${{secrets.AWS_ROLE_ARN}}
         role-session-name: samplerolesession
-        aws-region: eu-west-1
+        aws-region: ${{secrets.AWS_REGION}}
     
-    - name: Login to Amazon ECR
-      id: login-ecr
+    - name: Update EKS deployment
+      id: deploy-eks
       uses: aws-actions/amazon-ecr-login@v1
     - name: Update kube config
       run: aws eks update-kubeconfig --name dob-dev-cluster --region eu-west-1
     - name: Set image tag
       env:
           ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
+          ECR_REPOSITORY: ${{ github.event.repository.name }}
       run: |
         COMMIT_ID=$(echo "${{ github.sha }}" | head -c 5)
         cd demo-charts/demo
