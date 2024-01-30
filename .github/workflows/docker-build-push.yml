@@ -47,7 +47,7 @@ jobs:
         id: docker-build
         env:
           ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{secrets.REPO_NAME}}
+          ECR_REPOSITORY: ${{secrets.ECR_REPO_NAME}}
 
         run: |
           COMMIT_ID=$(echo "${{ github.sha }}" | head -c 5)
@@ -59,7 +59,7 @@ jobs:
       - name: Image Scan
         env:
           ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
+          ECR_REPOSITORY: ${{ secrets.ECR_REPO_NAME }}
           TRIVY_SECRET_SCAN: 'true'
         uses: aquasecurity/trivy-action@master
         with:
@@ -74,7 +74,7 @@ jobs:
         id: docker-push
         env:
           ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
+          ECR_REPOSITORY: ${{ secrets.ECR_REPO_NAME }}
 
         run: |
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{steps.docker-build.outputs.IMAGE_TAG}}
