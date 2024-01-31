@@ -24,3 +24,5 @@ Chage the repository value in `demo-charts/demo/values.yaml`
 - Docker image is tagged with the format `${BRANCH_NAME}-${COMMIT_ID}`.
 - The deployment workflow is triggered automatically upon successful completion of the Build and Push Docker Image workflow.
 - The helm chart deployment manifest (`demo-charts/demo`) is updated with the latest Docker image tag.
+#### Application URL
+you can access url for application frm output of `assignment-svc` **Deploy workflow**
