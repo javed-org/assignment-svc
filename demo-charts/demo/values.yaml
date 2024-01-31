@@ -54,7 +54,7 @@ ingress:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
    
   hosts:
-    - host: demo.dev.ob.digitify.com
+    - host: test
       paths:
         - path: /
           pathType: Prefix    
