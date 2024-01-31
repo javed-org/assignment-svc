@@ -3,7 +3,7 @@ This guide provides instructions for deploying a Java application on Amazon EKS 
 
 #### Prerequisites
 Before you proceed, ensure you have the following prerequisites in the secrets in the github secrets:
-- AWS_REGION=your-aws-region **(same arn that is used for assigment-iac repo)**
+- AWS_REGION=your-aws-region **(same REGION that is used for assigment-iac repo)**
 - AWS_ROLE_ARN=aws-role-arn **(same arn that is used for assigment-iac repo)**
 - EKS_CLUSTER_NAME=eks-clustername **(obtained from output of terraform assignment-iac)**
 - ECR_REPO_NAME=ecr-repo-name **(obtained from output of terraform assignment-iac)**
@@ -26,5 +26,5 @@ Chage the repository value in `demo-charts/demo/values.yaml`
 - The helm chart deployment manifest (`demo-charts/demo`) is updated with the latest Docker image tag.
 #### Application URL
 - you can access url for application from output of `assignment-svc` **Deploy workflow** and it will look like this `my-alb-1157299506.***.elb.amazonaws.com/assessment/actuator/health` 
-- replace `***` form url with AWS_REGION value like `my-alb-1157299506.eu-west-1.elb.amazonaws.com/assessment/actuator/health`
+- replace `***` form url with AWS_REGION value looks like this `my-alb-1157299506.eu-west-1.elb.amazonaws.com/assessment/actuator/health`
 - Now hit this url in browser and see output
