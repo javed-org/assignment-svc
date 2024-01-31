@@ -47,8 +47,10 @@ jobs:
         kubectl get po
         sleep 60s
         kubectl get ingress
-        echo ${{secrets.AWS_REGION}} | sed 's/./& /g' | sed 's/ //g'
-        REGION=$(echo ${{secrets.AWS_REGION}} | sed 's/./& /g' | sed 's/ //g')
+        echo ${{secrets.AWS_REGION}} | sed 's/./& /g' 
+        REGION=$(echo ${{secrets.AWS_REGION}} | sed 's/./& /g' )
+        echo $REGION | sed 's/ //g'
+        EXTRACT_REGION=$(echo ${{secrets.AWS_REGION}} | sed 's/ //g' )
         echo $REGION
         INGRESS_URL=$(kubectl get ingress  -o jsonpath='{.items[0].status.loadBalancer.ingress[0].ip}')
         echo "Application  URL: $INGRESS_URL/assessment/actuator/health"    
