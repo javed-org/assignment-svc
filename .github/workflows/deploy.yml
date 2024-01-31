@@ -29,16 +29,10 @@ jobs:
     
     - name: Update kube config
       run: aws eks update-kubeconfig --name ${{secrets.EKS_CLUSTER_NAME}} --region ${{secrets.AWS_REGION}}
-    - name: Set image tag
-      env:
-          ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{secrets.ECR_REPO_NAME}}
-          
+    - name: Set image tag     
       run: |
         
         cd demo-charts/demo
-        echo $ECR_REGISTRY
-        echo $ECR_REPOSITORY
         COMMIT_ID=$(echo "${{ github.sha }}" | head -c 5)
         sed -E -i "s/tag: \"(.*)\"/tag: \"${BRANCH_NAME}-${COMMIT_ID}\"/g" values.yaml
 
