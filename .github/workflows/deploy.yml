@@ -47,7 +47,5 @@ jobs:
         kubectl get po
         sleep 60s
         kubectl get ingress
-        kubectl get ev
-        kubectl get ingress -A -o jsonpath='{.items[0].status.loadBalancer.ingress[0].hostname}'
         INGRESS_URL=$(kubectl get ingress -A -o jsonpath='{.items[0].status.loadBalancer.ingress[0].hostname}')
         echo "Application  URL: $INGRESS_URL/assessment/actuator/health"    
