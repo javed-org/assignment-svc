@@ -37,6 +37,8 @@ jobs:
       run: |
         
         cd demo-charts/demo
+        echo $ECR_REGISTRY
+        echo $ECR_REPOSITORY
         COMMIT_ID=$(echo "${{ github.sha }}" | head -c 5)
         sed -E -i "s/tag: \"(.*)\"/tag: \"${BRANCH_NAME}-${COMMIT_ID}\"/g" values.yaml
 
