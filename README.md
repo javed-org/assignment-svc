@@ -25,5 +25,6 @@ Chage the repository value in `demo-charts/demo/values.yaml`
 - The deployment workflow is triggered automatically upon successful completion of the Build and Push Docker Image workflow.
 - The helm chart deployment manifest (`demo-charts/demo`) is updated with the latest Docker image tag.
 #### Application URL
-you can access url for application from output of `assignment-svc` **Deploy workflow**
-
+- you can access url for application from output of `assignment-svc` **Deploy workflow** and it will look like this `my-alb-1157299506.***.elb.amazonaws.com/assessment/actuator/health` 
+- replace `***` form url with AWS_REGION value like `my-alb-1157299506.eu-west-1.elb.amazonaws.com/assessment/actuator/health`
+- Now hit this url in browser and see output
