@@ -45,7 +45,7 @@ jobs:
         
         cd demo-charts/demo && helm upgrade --install demo . -f values.yaml 
         kubectl get po
-        sleep 120s
+        sleep 60s
         kubectl get ingress
         REGION=$(echo "${{secrets.AWS_REGION}}" | sed 's/ //g')
         echo $REGION
