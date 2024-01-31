@@ -6,9 +6,11 @@ This guide provides instructions for deploying a Java application on Amazon EKS 
 
 Before you proceed, ensure you have the following prerequisites:
 
-- [Java 17](https://www.oracle.com/java/technologies/javase-downloads.html) installed on your local machine for local development.
+- Updae the secrets in github settings(**AWS_REGION,AWS_ROLE_ARN(same arn that is used for assigment-iac repo)
+,EKS_CLUSTER_NAME**)
+
+
 - AWS IAM role with the necessary permissions for Amazon ECR and EKS.
-- [GitHub Actions Workflow](.github/workflows/build-and-push.yml) and [Deployment Workflow](.github/workflows/deploy.yml) files in your repository. 
 
 ## Build and Push Docker Image Workflow
 
