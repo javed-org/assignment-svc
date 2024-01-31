@@ -26,3 +26,4 @@ Chage the repository value in `demo-charts/demo/values.yaml`
 - The helm chart deployment manifest (`demo-charts/demo`) is updated with the latest Docker image tag.
 #### Application URL
 you can access url for application from output of `assignment-svc` **Deploy workflow**
+
