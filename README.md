@@ -10,7 +10,7 @@ Before you proceed, ensure you have the following prerequisites in the secrets i
 
 Chage the repository value in `demo-charts/demo/values.yaml`
 - Copy the ecr_repo_urls= 123456789.dkr.ecr.`**`.amazonaws.com/assignment-demo-assignment-svc **(obtainer from output of terraform assignment-iac)**
-- Replace ** from ecr_repo_url with your AWS_REGION look like this **123456789.dkr.ecr.`eu-west1`.amazonaws.com/assignment-demo-assignment-svc**
+- Replace ``**`` from ecr_repo_url with your AWS_REGION look like this **123456789.dkr.ecr.`eu-west1`.amazonaws.com/assignment-demo-assignment-svc**
 - change the value in `demo-charts/demo/values.yaml` for repository variable and it will looks like this
   ```yaml
   image:
