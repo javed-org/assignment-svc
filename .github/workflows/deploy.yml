@@ -45,7 +45,7 @@ jobs:
         
         cd demo-charts/demo && helm upgrade --install demo . -f values.yaml 
         kubectl get po
-        sleep 60s
+        sleep 120s
         kubectl get ingress
         INGRESS_URL=$(kubectl get ingress -A -o jsonpath='{.items[0].status.loadBalancer.ingress[0].hostname}')
         echo "Application  URL: $INGRESS_URL/assessment/actuator/health"    
