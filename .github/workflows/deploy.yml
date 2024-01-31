@@ -52,5 +52,6 @@ jobs:
         echo $REGION | sed 's/ //g'
         EXTRACT_REGION=$(echo ${{secrets.AWS_REGION}} | sed 's/ //g' )
         echo $EXTRACT_REGION
+        kubectl get ingress -o jsonpath='{.items[0].status.loadBalancer.ingress[0].ip}'
         INGRESS_URL=$(kubectl get ingress  -o jsonpath='{.items[0].status.loadBalancer.ingress[0].ip}')
         echo "Application  URL: $INGRESS_URL/assessment/actuator/health"    
